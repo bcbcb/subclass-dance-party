@@ -1,3 +1,5 @@
+//sinon => replace setTimeout with its own function
+//creates a spy that has characteristic of original function + more capability
 describe("blinkyDancer", function() {
 
   var blinkyDancer;
@@ -6,7 +8,7 @@ describe("blinkyDancer", function() {
 
   beforeEach(function() {
     clock = sinon.useFakeTimers();
-    blinkyDancer = makeBlinkyDancer(10, 20, timeBetweenSteps);
+    blinkyDancer = new BlinkyDancer(10, 20, timeBetweenSteps);
   });
 
   it("should have a jQuery $node object", function(){
@@ -22,8 +24,10 @@ describe("blinkyDancer", function() {
   describe("dance", function(){
     it("should call step at least once per second", function(){
       sinon.spy(blinkyDancer, "step");
+      // has how many times we called this function. doesn't have on original
+      // function but spy has it
       expect(blinkyDancer.step.callCount).to.be.equal(0);
-      clock.tick(timeBetweenSteps); // ? it seems an extra tick is necessary...
+      //clock.tick(timeBetweenSteps); // ? it seems an extra tick is necessary...
       clock.tick(timeBetweenSteps);
 
       expect(blinkyDancer.step.callCount).to.be.equal(1);
