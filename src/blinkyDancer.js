@@ -13,6 +13,7 @@ var BlinkyDancer = function(top, left, timeBetweenSteps){
 
   //return blinkyDancer;
   //return this; => this line will be incorporated
+  this.$node.html("<img src=santa.gif>");
 };
 
 BlinkyDancer.prototype = Object.create(Dancer.prototype);

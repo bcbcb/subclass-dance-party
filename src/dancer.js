@@ -1,11 +1,13 @@
 // Creates and returns a new dancer object that can step
 // Base Class => must refactor to pseudoclassical first
 var Dancer = function(top, left, timeBetweenSteps){
-
-  //var dancer = {};
-
+  this.top = top;
+  this.left = left;
   // use jQuery to create an HTML <span> tag
   this.$node = $('<span class="dancer"></span>');
+  this.$node.mouseover(function() {
+    $(this).toggleClass('glow');
+  });
 
   this.step(timeBetweenSteps);
 
@@ -32,4 +34,31 @@ Dancer.prototype.setPosition = function(top, left){
     left: left
   };
   this.$node.css(styleSettings);
+  this.top = top;
+  this.left = left;
+
+  this.checkDistance();
 };
+
+Dancer.prototype.lineUp = function () {
+  this.setPosition(400);
+};
+
+Dancer.prototype.checkDistance = function () {
+  var threshold = 100;
+
+  for (var i = 0; i < window.dancers.length; i++) {
+    var neighbor = window.dancers[i];
+    if (neighbor === this ) {
+      continue;
+    }
+    var a = Math.pow( this.top - neighbor.top, 2);
+    var b = Math.pow( this.left - neighbor.left, 2);
+    var c = Math.sqrt(a + b);
+
+    if (c <= threshold) {
+      this.$node.addClass("animated rubberBand red");
+      neighbor.$node.addClass("animated rubberBand blue");
+    };
+  }
+}

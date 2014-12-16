@@ -3,16 +3,22 @@
   <head>
     <title>Object Dance Party</title>
     <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="stylesheet" type="text/css" href="animate.css" />
     <script src="lib/jquery.js"></script>
+
     <script src="src/dancer.js"></script>
     <!-- make sure we have dancer.js files -->
     <script src="src/blinkyDancer.js"></script>
+    <script src="src/newDancer.js"></script>
   </head>
   <body>
     <div class="topbar">
       <span class="title">object dance party</span>
       <!-- Where we create dancer -->
-      <a href="#" class="addDancerButton" data-dancer-maker-function-name="BlinkyDancer">add a blinky dancer</a>    </div>
+      <a href="#" class="lineDancersUp">line dancers up</a>
+      <a href="#" class="addDancerButton" data-dancer-maker-function-name="BlinkyDancer">add a blinky dancer</a>
+      <a href="#" class="addDancerButton" data-dancer-maker-function-name="BouncyDancer">add a bouncy dancer</a>
+      <a href="#" class="addDancerButton" data-dancer-maker-function-name="WobblyDancer">add a wobble dancer</a>
     <script src="src/init.js"></script>
   </body>
 </html>

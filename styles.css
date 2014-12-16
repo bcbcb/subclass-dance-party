@@ -21,7 +21,35 @@ body, a:link, a:visited, a:active{
   background-color: #777;
 }
 .dancer{
-  border:10px solid red;
-  border-radius:10px;
   position:absolute;
+  transition: 1s;
+}
+.bouncy {
+  color: #999;
+  border: none;
+  font-size: 200px;
+  position:absolute;
+  transition: .15s;
+}
+
+
+.bouncing {
+  color: white;
+  transition: .15s;
+}
+
+.wobbly {
+  color: #ccc;
+  font-size: 50px;
+  border: none;
+  position:absolute;
+  transition: 1s;
+}
+
+.red {
+  color: red;
+}
+
+.glow {
+  text-shadow: 0px 0px 10px blue;
 }
