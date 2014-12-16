@@ -14,7 +14,7 @@ var BouncyDancer = function(top, left, timeBetweenSteps){
   //return blinkyDancer;
   //return this; => this line will be incorporated
   this.$node.text("\u2603");
-  this.$node.addClass('bouncy');
+  this.$node.addClass('animated bouncy');
 };
 
 BouncyDancer.prototype = Object.create(Dancer.prototype);
@@ -27,8 +27,7 @@ BouncyDancer.prototype.step = function(timeBetweenSteps){
   // toggle() is a jQuery method to show/hide the <span> tag.
   // See http://api.jquery.com/category/effects/ for this and
   // other effects you can use on a jQuery-wrapped html tag.
-  this.$node.toggleClass('animated bounce');
-  this.$node.toggleClass('bouncing');
+  this.$node.toggleClass('bounce bouncing');
 
 };
 
@@ -64,7 +63,7 @@ WobblyDancer.prototype.step = function(timeBetweenSteps){
   // toggle() is a jQuery method to show/hide the <span> tag.
   // See http://api.jquery.com/category/effects/ for this and
   // other effects you can use on a jQuery-wrapped html tag.
-  this.$node.toggleClass('animated wobble');
+  this.$node.toggleClass('animated wobble glow');
 
   this.$node.animate({  borderSpacing: -90 }, {
     step: function(now,fx) {
@@ -82,3 +81,23 @@ WobblyDancer.prototype.step = function(timeBetweenSteps){
 
 
 };
+
+var FlyingDancer = function(top, left, timeBetweenSteps){
+  Dancer.apply(this,arguments);
+  this.t = 0;
+  this.$node.addClass("flying");
+};
+
+FlyingDancer.prototype = Object.create(Dancer.prototype);
+FlyingDancer.prototype.constructor = FlyingDancer;
+
+FlyingDancer.prototype.step = function(timeBetweenSteps){
+  // call the old version of step at the beginning of any call to this new version of step
+  // oldStep();
+  Dancer.prototype.step.call(this,timeBetweenSteps);
+
+  this.setPosition( Math.sin(2 * this.t) * 500 + 500, Math.sin(1 * this.t) * 500 + 500);
+  console.log(this.top, this.left);
+  this.t++;
+};
+

@@ -1,9 +1,13 @@
 body, html{
   height:100%;
+  overflow:hidden;
+  user-select: none;
 }
 body{
   margin: 0px;
   background-color:#444;
+  background-image: url('snow.jpg');
+  background-size: 100% auto;
   font-size: 18px;
   font-family: helvetica;
 }
@@ -26,33 +30,42 @@ body, a:link, a:visited, a:active{
   transition: 1s;
 }
 .bouncy {
-  color: #999;
+  color: white;
   border: none;
-  font-size: 200px;
+  font-size: 500px;
   position:absolute;
   transition: .15s;
 }
 
 
 .bouncing {
-  color: white;
+  text-shadow: 0px 0px 20px white;
   transition: .15s;
 }
 
 .wobbly {
-  color: #ccc;
-  font-size: 50px;
+  color: #eee;
+  font-size: 100px;
   border: none;
   position:absolute;
   transition: 1s;
 }
 
+.flying {
+  border: 3px solid #eee;
+  border-radius: 3px;
+}
+
+
 .red {
   color: red;
 }
+.blue {
+  color: blue;
+}
 
 .glow {
-  text-shadow: 0px 0px 10px blue;
+  text-shadow: 0px 0px 100px white;
 }
 
 .dance-floor2 .dancer {

@@ -49,20 +49,24 @@ Dancer.prototype.lineUp = function () {
 };
 
 Dancer.prototype.checkDistance = function () {
-  var threshold = 100;
+  if (this.top > window.innerHeight - 25 || this.left > window.innerWidth - 25) {
+    //this.$node.remove();
+  } else {
+    var threshold = 100;
 
-  for (var i = 0; i < window.dancers.length; i++) {
-    var neighbor = window.dancers[i];
-    if (neighbor === this ) {
-      continue;
+    for (var i = 0; i < window.dancers.length; i++) {
+      var neighbor = window.dancers[i];
+      if (neighbor === this ) {
+        continue;
+      }
+      var a = Math.pow( this.top - neighbor.top, 2);
+      var b = Math.pow( this.left - neighbor.left, 2);
+      var c = Math.sqrt(a + b);
+
+      if (c <= threshold) {
+        this.$node.addClass("animated rubberBand");
+        // neighbor.$node.addClass("animated rubberBand");
+      };
     }
-    var a = Math.pow( this.top - neighbor.top, 2);
-    var b = Math.pow( this.left - neighbor.left, 2);
-    var c = Math.sqrt(a + b);
-
-    if (c <= threshold) {
-      this.$node.addClass("animated rubberBand red");
-      neighbor.$node.addClass("animated rubberBand blue");
-    };
   }
 }
