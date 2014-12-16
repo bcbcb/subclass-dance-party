@@ -37,5 +37,12 @@ $(document).ready(function(){
     }
   });
 
+  $(".changeDanceFloor").on("click", function(event) {
+    $('body').toggleClass('dance-floor2');
+    for (var i = 0; i < window.dancers.length; i++) {
+      window.dancers[i].$node.toggleClass('dance-floor2');
+    }
+  });
+
 });
 

@@ -41,7 +41,11 @@ Dancer.prototype.setPosition = function(top, left){
 };
 
 Dancer.prototype.lineUp = function () {
-  this.setPosition(400);
+  this.setPosition(400, this.left);
+  var context = this;
+  var conga = setInterval(function() {
+    context.setPosition(context.top, context.left + 30);
+  }, 500);
 };
 
 Dancer.prototype.checkDistance = function () {
